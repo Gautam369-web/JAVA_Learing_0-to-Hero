@@ -253,3 +253,92 @@ Produces a 3×3 multiplication table.
 ---
 Feel free to request a **solution template** for any of the three practice problems, or let me know when you have successfully compiled and run one of them!
 
+# Chapter 2 – Control Flow Practice Problems
+
+## Problem 1 – Multiplication Table
+**Statement**: Given an integer `n (1 ≤ n ≤ 20)`, print the multiplication table of `n` from `1×n` to `10×n`.
+**Input**: Single integer `n`.
+**Output**: Ten lines, each line in the format `i * n = result`.
+
+### Solution (`MultiplicationTable.java`)
+```java
+import java.util.Scanner;
+
+public class MultiplicationTable {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // read n
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(i + " * " + n + " = " + (i * n));
+        }
+        sc.close();
+    }
+}
+```
+---
+## Problem 2 – Prime Checker
+**Statement**: Determine whether a given integer `p` (> 1) is a prime number.
+**Input**: One integer `p`.
+**Output**: `Prime` if `p` is prime, otherwise `Not Prime`.
+
+### Solution (`PrimeChecker.java`)
+```java
+import java.util.Scanner;
+
+public class PrimeChecker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int p = sc.nextInt(); // read p
+        if (p <= 1) {
+            System.out.println("Not Prime");
+            sc.close();
+            return;
+        }
+        boolean isPrime = true;
+        for (int i = 2; i * i <= p; i++) {
+            if (p % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        System.out.println(isPrime ? "Prime" : "Not Prime");
+        sc.close();
+    }
+}
+```
+---
+## Problem 3 – Reverse Digits
+**Statement**: Read an integer (may be negative) and output its digits in reverse order, preserving the sign.
+**Input**: One integer `x`.
+**Output**: The reversed integer (e.g., `-123` → `-321`).
+
+### Solution (`ReverseDigits.java`)
+```java
+import java.util.Scanner;
+
+public class ReverseDigits {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt(); // read x
+        int sign = x < 0 ? -1 : 1;
+        x = Math.abs(x);
+        int reversed = 0;
+        while (x > 0) {
+            int digit = x % 10;
+            reversed = reversed * 10 + digit;
+            x /= 10;
+        }
+        System.out.println(sign * reversed);
+        sc.close();
+    }
+}
+```
+---
+### How to Test
+1. Save each snippet in a file with the exact class name (`MultiplicationTable.java`, `PrimeChecker.java`, `ReverseDigits.java`).
+2. Compile: `javac <FileName>.java`
+3. Run: `java <ClassName>` and provide the required input.
+4. Verify the console output matches the expected format shown above.
+
+Feel free to experiment with additional test cases or modify the code to explore other control‑flow constructs!
+
